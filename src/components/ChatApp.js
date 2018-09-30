@@ -11,7 +11,7 @@ class ChatApp extends React.Component {
   socket = {};
   constructor(props) {
     super(props);
-    this.state = { messages: [] };
+    this.state = { messages: [], username: props.username};
     this.sendHandler = this.sendHandler.bind(this);
     
     // Connect to the server
@@ -44,9 +44,10 @@ class ChatApp extends React.Component {
   }
 
   render() {
+
     return (
       <div className="container">
-        <h3>React Chat App</h3>
+        <h3>{this.state.username}의 대화방</h3>
         <Messages messages={this.state.messages} />
         <ChatInput onSend={this.sendHandler} />
       </div>

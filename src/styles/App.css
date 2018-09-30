@@ -26,13 +26,13 @@ input[type="text"] {
 }
 
 input[type="text"]:focus {
-  border: 1px solid #AF9570;
+  /*border: 1px solid #AF9570;*/
   outline: none !important;
 }
 
 input[type="submit"] {
-  background-color: #323232;
-  color: white;
+  background-color: #FFEB00;
+  color: #1E1E1E;
   font: 700 1rem "proxima-nova",sans-serif;
   border: none;
   position: relative;
@@ -43,9 +43,9 @@ input[type="submit"] {
   padding: 20px 80px;
   text-align: center;
   cursor: pointer;
-  -webkit-box-shadow: -7px 7px 0px rgba(50,50,50,0.15);
+/*  -webkit-box-shadow: -7px 7px 0px rgba(50,50,50,0.15);
   -moz-box-shadow: -7px 7px 0px rgba(50,50,50,0.15);
-  box-shadow: -7px 7px 0px rgba(50,50,50,0.15);
+  box-shadow: -7px 7px 0px rgba(50,50,50,0.15);*/
   margin-top: 20px;
 }
 

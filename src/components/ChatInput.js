@@ -31,7 +31,7 @@ class ChatInput extends React.Component {
         <input type="text"
           onChange={this.textChangeHandler}
           value={this.state.chatInput}
-          placeholder="Write a message..."
+          placeholder="메시지를 입력하세요"
           required />
       </form>
     );

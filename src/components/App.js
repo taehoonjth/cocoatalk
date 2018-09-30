@@ -34,15 +34,15 @@ class App extends React.Component {
     // Initial page load, show a simple login form
     return (
       <form onSubmit={this.usernameSubmitHandler} className="username-container">
-        <h1>React Instant Chat</h1>
+        <h1>코코아톡</h1>
         <div>
           <input
             type="text"
             onChange={this.usernameChangeHandler}
-            placeholder="Enter a username..."
+            placeholder="사용자 이름을 입력하세요"
             required />
         </div>
-        <input type="submit" value="Submit" />
+        <input type="submit" value="다음" />
       </form>
     );
   }

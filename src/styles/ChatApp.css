@@ -1,4 +1,5 @@
 .container {
+  position: relative;
   display: flex;
   flex-direction: column;
 }
@@ -8,14 +9,18 @@
   overflow-x: hidden;
   flex-grow: 1;
   padding: 20px;
+  background-color: #ABC1D1;
 }
 
 h3 {
   text-align: center;
   padding: 20px 0;
   margin: 0;
-  border-bottom: 1px solid #ddd;
-  background-color: #eee;
+  border-bottom: 2px solid #A9B1B7;
+  background-color: #ABC1D1;
+  position: absolute;
+  width: 100%;
+  opacity: 0.8;
 }
 
 .chat-input {
@@ -29,6 +34,8 @@ h3 {
   width: 100%;
   margin-left: -20px;
   margin-right: -20px;
+  border-radius: 100px;
+  background-color: #F8F8F8;
 }
 
 .message.from-me .username {
@@ -42,8 +49,8 @@ h3 {
 }
 
 .message.from-me .message-body {
-  background-color: #af9570;
-  color: white;
+  background-color: #FFE500;
+  color: black;
 }
 
 .message {
@@ -53,7 +60,7 @@ h3 {
   max-width: 80%;
   display: inline-block;
   padding: 20px;
-  background-color: #eee;
+  background-color: #ffffff;
   border: 1px;
   border-radius: 5px;
   padding-right: 50px;
@@ -62,6 +69,7 @@ h3 {
 .username {
   font-weight: bold;
   font-size: 0.9rem;
-  color: #999;
+  color: #454C54;
   margin-bottom: 5px;
 }
+
