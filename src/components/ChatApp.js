@@ -2,6 +2,7 @@ require('../styles/ChatApp.css');
 
 import React from 'react';
 import io from 'socket.io-client';
+import axios from 'axios';
 import config from '../config';
 
 import Messages from './Messages';
@@ -15,12 +16,27 @@ class ChatApp extends React.Component {
     this.sendHandler = this.sendHandler.bind(this);
     
     // Connect to the server
-    this.socket = io(config.api, { query: `username=${props.username}` }).connect();
+    // 'http://localhost:4008'
+    this.socket = io('http://localhost:4008', { query: `username=${props.username}` }).connect();
 
     // Listen for messages from the server
     this.socket.on('server:message', message => {
       this.addMessage(message);
     });
+  }
+
+
+  componentDidMount() {
+    axios.get('http://localhost:4008/messages').then((response)=>{
+      let messages = response.data;
+      messages = messages.map(message => {
+        if(message.username === this.state.username) {
+          message.fromMe = true;
+        }
+        return message;
+      })
+      this.setState({ messages });
+    })
   }
 
   sendHandler(message) {
@@ -34,12 +50,14 @@ class ChatApp extends React.Component {
 
     messageObject.fromMe = true;
     this.addMessage(messageObject);
+    // console.log(this.state)
   }
 
   addMessage(message) {
-    // Append the message to the component state
+    // 컴포넌트의 state에 메시지를 추가합니다.
     const messages = this.state.messages;
     messages.push(message);
+    // console.log('addMessage', messages)
     this.setState({ messages });
   }
 
