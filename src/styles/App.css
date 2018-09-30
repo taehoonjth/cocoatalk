@@ -36,9 +36,9 @@ input[type="submit"] {
   font: 700 1rem "proxima-nova",sans-serif;
   border: none;
   position: relative;
-  -webkit-transition: 0.3s ease-in-out;
+/*  -webkit-transition: 0.3s ease-in-out;
   -moz-transition: 0.3s ease-in-out;
-  transition: 0.3s ease-in-out;
+  transition: 0.3s ease-in-out;*/
   text-decoration: none;
   padding: 20px 80px;
   text-align: center;
@@ -50,8 +50,9 @@ input[type="submit"] {
 }
 
 input[type="submit"]:hover {
-  -webkit-box-shadow: -10px 10px 0px rgba(50,50,50,0.15);
-  -moz-box-shadow: -10px 10px 0px rgba(50,50,50,0.15);
-  box-shadow: -10px 10px 0px rgba(50,50,50,0.15);
+/*  -webkit-box-shadow: -10px 10px 0px rgba(50,50,50,0.15);
+  -moz-box-shadow: -10px 10px 0px rgba(50,50,50,0.15);*/
+  /*box-shadow: -10px 10px 0px rgba(50,50,50,0.15);*/
+  color: #ffffff;
   background-color: #1e1e1e;
 }
