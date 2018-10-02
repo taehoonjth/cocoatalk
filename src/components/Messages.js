@@ -4,26 +4,24 @@ import Message from './Message';
 
 class Messages extends React.Component {
   componentDidUpdate() {
-    // There is a new message in the state, scroll to bottom of list
+    // 새로운 메시지가 들어오면 맨 아래로 스크롤 합니다.
     const objDiv = document.getElementById('messageList');
     objDiv.scrollTop = objDiv.scrollHeight;
   }
 
   render() {
     // Loop through all the messages in the state and create a Message component
-    const messages = this.props.messages.map((message, i) => {
-        return (
-          <Message
-            key={i}
-            username={message.username}
-            message={message.message}
-            fromMe={message.fromMe} />
-        );
-      });
-
     return (
       <div className='messages' id='messageList'>
-        { messages }
+        {this.props.messages.map((message, i) => {
+          return (
+            <Message
+              key={i}
+              username={message.username}
+              message={message.message}
+              fromMe={message.fromMe} />
+          );
+        })}
       </div>
     );
   }
