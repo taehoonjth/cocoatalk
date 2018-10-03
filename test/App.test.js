@@ -16,55 +16,78 @@ it('renders without crashing', () => {
   ReactDOM.unmountComponentAtNode(div);
 });
 
-describe('<Message /> 테스트', () => {
-  let component = null;
-
-  it('제대로 랜더링이 되는지 확인', () => {
-    component = shallow(<Message />);
-  });
-
-  describe('???', () => {
-    it('`.username`을 랜더링 하는지 확인', () => {
-      expect(component.find('.username').exists()).toBe(true);
-    })
-    it('`.message-body`을 랜더링 하는지 확인', () => {
-      expect(component.find('.message-body').exists()).toBe(true);
-    })
-  })
-
-  describe('내가 쓴 메시지를 제대로 표시하는지 확인', () => {
-    component = shallow((
+describe('<Message /> tests', () => {
+  describe('should have username and message body', () => {
+    const baseComponent = shallow(
       <Message
         key={0}
         username={'철수'}
-        message={'안녕 애들아'}
-        fromMe={true} />
-    ));
-    it('내가 쓴 메시지일 경우 `fromMe`', () => {
-      expect(component.find('.username').exists()).toBe(true);
+        message={'안녕 얘들아'}
+        fromMe={false}
+      />
+    );
+    it('should have username', () => {
+      expect(baseComponent.find('.username').length).toBe(1);
     })
-    it('`.username`을 랜더링 하는지 확인', () => {
-      expect(component.find('.username').exists()).toBe(true);
-    })
-    it('`.message-body`을 랜더링 하는지 확인', () => {
-      expect(component.find('.message-body').exists()).toBe(true);
+    it('should have message body', () => {
+      expect(baseComponent.find('.message-body').length).toBe(1);
     })
   })
-  
+
+  describe('should render a new message with correct username and contents', () => {
+    const fromMeComponent = shallow(
+      <Message
+        key={1}
+        username={'영희'}
+        message={'안녕 철수야'}
+        fromMe={true}
+      />
+    );
+    it('should have both username and message', () => {
+      expect(fromMeComponent.props().children.length).toBe(2);
+    })
+    it('should have a correct class name when the message is from myself', () => {
+      expect(fromMeComponent.props().className).toEqual('message from-me');
+    })
+    it('should render correct user name', () => {
+      expect(fromMeComponent.props().children[0].props.children).toEqual('영희');
+    })
+    it('should render correct message body', () => {
+      expect(fromMeComponent.props().children[1].props.children).toEqual('안녕 철수야');
+    })
+  })
 });
 
-describe('<Messages /> 테스트', () => {
-  let component = null;
+describe('<Messages /> tests', () => {
+  const firstMessage = shallow(
+    <Message
+      key={0}
+      username={'a'}
+      message={'안녕 얘들아'}
+      fromMe={false}
+    />
+  );
+  const secondMessage = shallow(
+    <Message
+      key={1}
+      username={'b'}
+      message={'안녕 철수야'}
+      fromMe={true}
+    />
+  );
+  const messages = shallow(
+    <Messages
+      messages={[firstMessage, secondMessage]}
+    />
+  );
 
-  it('제대로 랜더링이 되는지 확인', () => {
-    component = shallow(<Messages />);
-  });
+  describe('should have correct messages rendered', () => {
+    it('should have correct class name', () => {
+      expect(messages.props().className).toEqual('messages');
+    });
 
-  describe('???', () => {
-    it('has a messages', () => {
-      expect(component.find('.messages').exists()).toBe(true);
-    })
+    it('should render a list of messages', () => {
+      expect(messages.props().children.length).toEqual(2);
+    });
   })
-
-  
 });
