@@ -3,10 +3,10 @@ import React from 'react';
 class Message extends React.Component {
   render() {
     // Was the message sent by the current user. If so, add a css class
-    const fromMe = this.props.fromMe ? 'from-me' : '';
+    const fromMe = this.props.fromMe ? 'message from-me' : 'message';
 
     return (
-      <div className={`message ${fromMe}`}>
+      <div className={`${fromMe}`}>
         <div className='username'>
           { this.props.username }
         </div>

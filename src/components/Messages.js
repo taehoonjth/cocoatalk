@@ -10,7 +10,7 @@ class Messages extends React.Component {
   }
 
   render() {
-    // Loop through all the messages in the state and create a Message component
+    // props로 받은 모든 메시지를 순서대로 불러 Message 컴포넌트를 만드세요
     return (
       <div className='messages' id='messageList'>
         {this.props.messages.map((message, i) => {
